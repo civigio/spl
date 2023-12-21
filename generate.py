@@ -87,4 +87,64 @@ def list_uniform_range(minimum: float,
 # ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
 
 
-#prova
+def tcl_ms(mean: float,
+           sigma: float,
+           n_sum: int = 10) -> float:
+    """
+    Generation of a pseudo-casual number distributed accordingly to the gaussian distribution
+    with the central limit theorem algorithm between known mean value and standard deviation
+
+    Args:
+        mean: mean value
+        sigma: standard deviation
+        n: number of repetitions used in the algorithm (optional, default: 10)
+
+    Returns:
+        A pseudo-casual numbers generated according to gaussian distribution specified
+
+    """
+
+    y = 0.
+    delta = math.sqrt(3 * n_sum) * sigma
+    minimum = mean - delta
+    maximum = mean + delta
+    for i in range(n_sum):
+        y += uniform_range(minimum, maximum)
+    y /= n_sum
+    return y
+
+
+# ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+
+
+def list_tcl_ms(mean: float,
+                sigma: float,
+                n: int,
+                n_sum: int = 10,
+                seed: float = 0.) -> list[float]:
+    """
+    Generation of a list of n pseudo-casual numbers distributed accordingly to the gaussian distribution
+    with the central limit theorem algorithm between known mean value and standard deviation starting from an optional seed
+    different from 0.
+
+    Args:
+        mean: mean value
+        sigma: standard deviation
+        n: number of repetitions used in the algorithm (optional, default: 10)
+
+    Returns:
+        A pseudo-casual numbers generated according to gaussian distribution specified
+
+    """
+
+    y = 0.
+    delta = math.sqrt(3 * n) * sigma
+    minimum = mean - delta
+    maximum = mean + delta
+    for i in range(n):
+        y += uniform_range(minimum, maximum)
+    y /= n
+    return y
+
+
+# ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
