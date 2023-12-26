@@ -238,6 +238,7 @@ def list_ifm_poisson(lambda_value: float,
     """
     Generation of a list of n pseudo-casual numbers distributed accordingly
     to a poissonian distribution with an expected value lambda_value with the inverse function method
+    combined with a monte-carlo/toy experiments technique
 
     Args:
         lambda_value: expected value of the poissonian distribution
