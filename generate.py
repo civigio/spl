@@ -130,21 +130,21 @@ def list_tcl_ms(mean: float,
     Args:
         mean: mean value
         sigma: standard deviation
-        n: number of repetitions used in the algorithm (optional, default: 10)
+        n: lenght of the list
+        n_sum: number of repetitions used in the algorithm (optional, default: 10)
+        seed: starting seed for the random number generator (optional, default: 0.)
 
     Returns:
-        A pseudo-casual numbers generated according to gaussian distribution specified
+        A list of pseudo-casual numbers generated according to gaussian distribution specified
 
     """
 
-    y = 0.
-    delta = math.sqrt(3 * n) * sigma
-    minimum = mean - delta
-    maximum = mean + delta
+    if seed != 0.:
+        random.seed(seed)
+    random_list = []
     for i in range(n):
-        y += uniform_range(minimum, maximum)
-    y /= n
-    return y
+        random_list.append(tcl_ms(mean, sigma, n_sum))
+    return random_list
 
 
 # ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
