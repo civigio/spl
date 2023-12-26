@@ -265,4 +265,35 @@ def list_ifm_poisson(lambda_value: float,
 # ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
 
 
+def tac_box(function,
+            x_minimum: float,
+            x_maximum: float,
+            y_minimum: float,
+            y_maximum: float) -> float:
+    """
+    Generation of a pseudo-casual number distributed accordingly to a function
+    with the try-an-catch algorithm, into a "box" delimited by x_minimum and x_maximum for the
+    horizontal axis and y_minimum and y_maximum for the vertical axis
+
+    Args:
+        function: the function which rules the distribution of numbers
+        x_minimum: lower limit of the range for the horizontal axis
+        x_maximum: upper limit of the range for the horizontal axis
+        y_minimum: lower limit of the range for the vertical axis
+        y_maximum: upper limit of the range for the vertical axis
+
+    Returns:
+        A single number generated with the try-an-catch algorithm distributed accordingly to the function wanted
+    """
+    x = uniform_range(x_minimum, x_maximum)
+    y = uniform_range(y_minimum, y_maximum)
+    while y > function(x):
+        x = uniform_range(x_minimum, x_maximum)
+        y = uniform_range(y_minimum, y_maximum)
+    return x
+
+
+# ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+
+
 #def
