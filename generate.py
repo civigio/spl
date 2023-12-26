@@ -124,7 +124,7 @@ def list_tcl_ms(mean: float,
                 seed: float = 0.) -> list[float]:
     """
     Generation of a list of n pseudo-casual numbers distributed accordingly to the gaussian distribution
-    with the central limit theorem algorithm between known mean value and standard deviation starting from an optional seed
+    with the central limit theorem algorithm known mean value and standard deviation starting from an optional seed
     different from 0.
 
     Args:
@@ -148,3 +148,66 @@ def list_tcl_ms(mean: float,
 
 
 # ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+
+
+def tcl_minmax(minimum: float,
+               maximum: float,
+               n_sum: int = 10) -> float:
+    """
+    Generation of a pseudo-casual number with the central limit theorem algorithm
+    between [minimum, maximum)
+
+    Args:
+        minimum: lower limit of the range (included)
+        maximum: upper limit of the range (excluded)
+        n_sum: number of repetitions used in the algorithm (optional, default: 10)
+
+    Returns:
+        A pseudo-casual numbers generated with the central limit theorem algorithm
+        between [minimum, maximum)
+    """
+
+    y = 0.
+    for i in range(n_sum):
+        y += uniform_range(minimum, maximum)
+    y /= n_sum
+    return y
+
+
+# ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+
+
+def list_tcl_minmax(minimum: float,
+                    maximum: float,
+                    n: int,
+                    n_sum: int = 10,
+                    seed: float = 0.) -> list[float]:
+    """
+    Generation of a list of n pseudo-casual numbers distributed between [minimum, maximum)
+    with the central limit theorem algorithm starting from an optional seed
+    different from 0.
+
+    Args:
+        minimum: lower limit of the range (included)
+        maximum: upper limit of the range (excluded)
+        n: lenght of the list
+        n_sum: number of repetitions used in the algorithm (optional, default: 10)
+        seed: starting seed for the random number generator (optional, default: 0.)
+
+    Returns:
+        A list of pseudo-casual numbers generated according to gaussian distribution specified
+
+    """
+
+    if seed != 0.:
+        random.seed(seed)
+    random_list = []
+    for i in range(n):
+        random_list.append(tcl_minmax(minimum, maximum, n_sum))
+    return random_list
+
+
+# ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+
+
+#def
