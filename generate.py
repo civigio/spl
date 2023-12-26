@@ -28,7 +28,6 @@ def list_uniform(n: int,
         random.seed(seed)
     random_list = []
     for i in range(n):
-        # Return the next random floating point number in the range 0.0 <= X < 1.0
         random_list.append(random.random())
     return random_list
 
@@ -97,7 +96,7 @@ def clt_ms(mean: float,
     Args:
         mean: mean value
         sigma: standard deviation
-        n: number of repetitions used in the algorithm (optional, default: 10)
+        n_sum: number of repetitions used in the algorithm (optional, default: 10)
 
     Returns:
         A pseudo-casual numbers generated according to gaussian distribution specified
@@ -204,6 +203,84 @@ def list_clt_minmax(minimum: float,
     random_list = []
     for i in range(n):
         random_list.append(clt_minmax(minimum, maximum, n_sum))
+    return random_list
+
+
+# ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+
+
+def list_ifm_general(inverse_cdf: callable,
+                     n: int) -> list[float]:
+    """
+    Generation of a list of n pseudo-casual numbers distributed accordingly
+    to a probability density function with the inverse function method
+
+    Args:
+        inverse_cdf: the inverse function of the cumulative density function of the probability density function wanted
+        n: lenght of the list
+
+    Returns:
+        A list of pseudo-casual numbers generated according to a chosen pdf
+    """
+
+    random_list = []
+    for i in range(n):
+        random_list.append(inverse_cdf(random.random()))
+    return random_list
+
+
+# ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+
+
+def list_ifm_exponential(t_0: float,
+                         n: int) -> list[float]:
+    """
+    Generation of a list of n pseudo-casual numbers distributed accordingly
+    to an exponential distribution with a characteristic time t_0 with the inverse function method
+
+    Args:
+        t_0: characteristic time of the exponential distribution
+        n: lenght of the list
+
+    Returns:
+        A list of pseudo-casual numbers generated according to an exponential distribution
+        with a characteristic time t_0
+    """
+
+    random_list = []
+    for i in range(n):
+        random_list.append(-((np.log(1-random.random()))*t_0))
+    return random_list
+
+
+# ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+
+
+def list_ifm_poisson(lambda_value: float,
+                     n: int) -> list[float]:
+    """
+    Generation of a list of n pseudo-casual numbers distributed accordingly
+    to a poissonian distribution with an expected value lambda_value with the inverse function method
+
+    Args:
+        lambda_value: expected value of the poissonian distribution
+        n: lenght of the list
+
+    Returns:
+        A list of pseudo-casual numbers generated according to a poissonian distribution with
+        an expected value lambda_value
+    """
+
+    random_list = []
+    for j in range(n):
+        i = 0
+        delta = 0
+        while delta <= lambda_value:
+            n = -(np.log(1 - random.random()))
+            delta = delta + n
+            i = i + 1
+        random_list.append(i - 1)
+
     return random_list
 
 
