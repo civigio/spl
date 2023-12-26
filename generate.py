@@ -247,10 +247,7 @@ def list_ifm_exponential(t_0: float,
         with a characteristic time t_0
     """
 
-    random_list = []
-    for i in range(n):
-        random_list.append(-((np.log(1-random.random()))*t_0))
-    return random_list
+    return list_ifm_general(-((np.log(1-random.random()))*t_0), n)
 
 
 # ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
