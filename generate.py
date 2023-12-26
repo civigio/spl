@@ -209,29 +209,6 @@ def list_clt_minmax(minimum: float,
 # ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
 
 
-def list_ifm_general(inverse_cdf: callable,
-                     n: int) -> list[float]:
-    """
-    Generation of a list of n pseudo-casual numbers distributed accordingly
-    to a probability density function with the inverse function method
-
-    Args:
-        inverse_cdf: the inverse function of the cumulative density function of the probability density function wanted
-        n: lenght of the list
-
-    Returns:
-        A list of pseudo-casual numbers generated according to a chosen pdf
-    """
-
-    random_list = []
-    for i in range(n):
-        random_list.append(inverse_cdf(random.random()))
-    return random_list
-
-
-# ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
-
-
 def list_ifm_exponential(t_0: float,
                          n: int) -> list[float]:
     """
@@ -247,7 +224,10 @@ def list_ifm_exponential(t_0: float,
         with a characteristic time t_0
     """
 
-    return list_ifm_general(-((np.log(1-random.random()))*t_0), n)
+    random_list = []
+    for i in range(n):
+        random_list.append(-((np.log(1-random.random()))*t_0))
+    return random_list
 
 
 # ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
