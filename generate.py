@@ -87,7 +87,7 @@ def list_uniform_range(minimum: float,
 # ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
 
 
-def tcl_ms(mean: float,
+def clt_ms(mean: float,
            sigma: float,
            n_sum: int = 10) -> float:
     """
@@ -117,7 +117,7 @@ def tcl_ms(mean: float,
 # ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
 
 
-def list_tcl_ms(mean: float,
+def list_clt_ms(mean: float,
                 sigma: float,
                 n: int,
                 n_sum: int = 10,
@@ -143,14 +143,14 @@ def list_tcl_ms(mean: float,
         random.seed(seed)
     random_list = []
     for i in range(n):
-        random_list.append(tcl_ms(mean, sigma, n_sum))
+        random_list.append(clt_ms(mean, sigma, n_sum))
     return random_list
 
 
 # ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
 
 
-def tcl_minmax(minimum: float,
+def clt_minmax(minimum: float,
                maximum: float,
                n_sum: int = 10) -> float:
     """
@@ -177,7 +177,7 @@ def tcl_minmax(minimum: float,
 # ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
 
 
-def list_tcl_minmax(minimum: float,
+def list_clt_minmax(minimum: float,
                     maximum: float,
                     n: int,
                     n_sum: int = 10,
@@ -203,7 +203,7 @@ def list_tcl_minmax(minimum: float,
         random.seed(seed)
     random_list = []
     for i in range(n):
-        random_list.append(tcl_minmax(minimum, maximum, n_sum))
+        random_list.append(clt_minmax(minimum, maximum, n_sum))
     return random_list
 
 
