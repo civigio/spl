@@ -51,14 +51,87 @@ def histogram(sample: list[float],
 # ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
 
 
-def scatter():
+def scatter(xcoord: list[float],
+            ycoord: list[float],
+            xerror: list[float] = None,
+            yerror: list[float] = None,
+            title: str = 'Scatter',
+            xlabel: str = 'x-axis',
+            ylabel: str = 'y-axis',
+            label: str = 'Scatter'):
+    """
+    Plots a scatter of the points expressed with coordinates in the two lists xcoord and ycoord, with
+    errorbars if the errors are declared into the function,
+    with optional title and x-label and y-label and legend. The function saves the plot as a png image
+
+    Args:
+        xcoord: coordinates of the points of the x-axis
+        ycoord: coordinates of the points of the y-axis
+        xerror: error on the x-axis
+        yerror: error on the y-axis
+        title: title of the plot
+        xlabel: label of the x-axis
+        ylabel: label of the y-axis
+        label: title of the plot in the legend
+
+    Returns:
+        The plot of the scatter
+    """
+
+    fig, ax = plt.subplots(nrows=1, ncols=1)
+    ax.errorbar(xcoord, ycoord, xerr=xerror, yerr=yerror, label=label)
+    ax.set_title(title, size=14)
+    ax.set_xlabel(xlabel)
+    ax.set_ylabel(ylabel)
+    ax.grid(True)
+    ax.legend()
+
+    plt.savefig(title + '.png')
+    plt.show()
     return
 
 
 # ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
 
 
-def graph():
+def graph(xmin: float,
+          xmax: float,
+          function,
+          title: str = 'Plot',
+          xlabel: str = 'x-axis',
+          ylabel: str = 'y-axis',
+          label: str = 'Function'):
+    """
+    Plots a function between the interval (xmin, xmax)  with optional title and x-label and y-label and legend.
+    The function saves the plot as a png image
+
+    Args:
+        xmin: minimum of the plot range
+        xmax: maximum of the plot range
+        function: function to plot (the parameter must be a defined function with only one argument, x)
+        title: title of the plot
+        xlabel: label of the x-axis
+        ylabel: label of the y-axis
+        label: title of the plot in the legend
+
+    Returns:
+        The plot of the function
+    """
+
+    fig, ax = plt.subplots(nrows=1, ncols=1)
+    xcoord = np.linspace(xmin, xmax)
+    ycoord = []
+    for i in range(len(xcoord)):
+        ycoord.append(function(xcoord[i]))
+    ax.scatter(xcoord, ycoord, label=label)
+    ax.set_title(title, size=14)
+    ax.set_xlabel(xlabel)
+    ax.set_ylabel(ylabel)
+    ax.grid(True)
+    ax.legend()
+
+    plt.savefig(title + '.png')
+    plt.show()
     return
 
 
