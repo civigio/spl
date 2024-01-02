@@ -119,7 +119,7 @@ def graph(xmin: float,
     """
 
     fig, ax = plt.subplots(nrows=1, ncols=1)
-    xcoord = np.linspace(xmin, xmax)
+    xcoord = np.linspace(xmin, xmax, 100000)
     ycoord = []
     for i in range(len(xcoord)):
         ycoord.append(function(xcoord[i]))
