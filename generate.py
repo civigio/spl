@@ -123,7 +123,7 @@ def list_clt_ms(mean: float,
     Args:
         mean: mean value
         sigma: standard deviation
-        n: lenght of the list
+        n: length of the list
         n_sum: number of repetitions used in the algorithm (optional, default: 10)
         seed: starting seed for the random number generator (optional, default: 0.)
 
@@ -183,7 +183,7 @@ def list_clt_minmax(minimum: float,
     Args:
         minimum: lower limit of the range (included)
         maximum: upper limit of the range (excluded)
-        n: lenght of the list
+        n: length of the list
         n_sum: number of repetitions used in the algorithm (optional, default: 10)
         seed: starting seed for the random number generator (optional, default: 0.)
 
@@ -211,7 +211,7 @@ def list_ifm_exponential(t_0: float,
 
     Args:
         t_0: characteristic time of the exponential distribution
-        n: lenght of the list
+        n: length of the list
 
     Returns:
         A list of pseudo-casual numbers generated according to an exponential distribution
@@ -236,7 +236,7 @@ def list_ifm_poisson(lambda_value: float,
 
     Args:
         lambda_value: expected value of the poissonian distribution
-        n: lenght of the list
+        n: length of the list
 
     Returns:
         A list of pseudo-casual numbers generated according to a poissonian distribution with
