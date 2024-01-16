@@ -1,4 +1,4 @@
-from math import sqrt, log
+from math import sqrt, log, ceil
 
 
 def mean(sample: list[float]) -> float:
@@ -137,6 +137,23 @@ def loglikelihood(sample: list[float],
         if pdf(x, parameter) > 0.:
             result = result + log(pdf(x, parameter))
     return result
+
+
+# ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+
+
+def sturges(sample: list[float]) -> int:
+    """
+    Calculation of the optimal number of bins to plot a histogram using the sturges rule
+
+    Args:
+        sample: list of floats representing data
+
+    Returns:
+        The number of bins according to sturges rule
+    """
+
+    return int(ceil(1 + 3.322 * log(len(sample))))
 
 
 # ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
