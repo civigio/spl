@@ -1,12 +1,6 @@
 import numpy as np
-import scipy as sp
 import matplotlib.pyplot as plt
 import math
-import time
-import random
-from iminuit import Minuit
-from iminuit.cost import LeastSquares
-from IPython.display import display
 
 
 def histogram(sample: list[float],
