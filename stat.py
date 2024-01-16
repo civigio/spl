@@ -27,7 +27,7 @@ def variance(sample: list[float],
 
     Args:
         sample: list of floats representing data
-        bessel: applies the bessel correction (default true)
+        bessel: applies the bessel correction (optional, default: True)
 
     Returns:
         The variance of the sample
@@ -55,7 +55,7 @@ def stddev(sample: list[float],
 
     Args:
         sample: list of floats representing data
-        bessel: applies the bessel correction (default true)
+        bessel: applies the bessel correction (optional, default: True)
 
     Returns:
         The standard deviation of the sample
@@ -75,7 +75,7 @@ def stderr(sample: list[float],
 
     Args:
         sample: list of floats representing data
-        bessel: applies the bessel correction (default true)
+        bessel: applies the bessel correction (optional, default: True)
 
     Returns:
         The standard error of the sample
