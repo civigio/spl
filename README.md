@@ -1,6 +1,8 @@
 # spl
 _spl_ (statistics python library) is a Python library for statistics, data analysis, plotting data developed by Giorgio Cividini.
 
+## Version 1.0.0 (current version) is now online
+
 ## Notes from the developer
 The current version of _spl_ does not have a complete _try-and-catch_ function because of the complexity of the algorithm.
 In the module _generate_ there is a function called _tac_box_ which implements the algorithm for a function in a defined square.
