@@ -1,6 +1,6 @@
-import Examples.ex1
-import Examples.ex2
-import Examples.ex3
+import spl.Examples.ex1
+import spl.Examples.ex2
+import spl.Examples.ex3
 
 
 def bisection(function,
@@ -89,7 +89,7 @@ def minuit_ls_example():
         Example exercise
     """
 
-    Examples.ex1.main()
+    spl.Examples.ex1.main()
     return
 
 
@@ -104,7 +104,7 @@ def minuit_binned_example():
         Example exercise
     """
 
-    Examples.ex2.main()
+    spl.Examples.ex2.main()
     return
 
 
@@ -119,5 +119,8 @@ def minuit_unbinned_example():
         Example exercise
     """
 
-    Examples.ex3.main()
+    spl.Examples.ex3.main()
     return
+
+
+# ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
