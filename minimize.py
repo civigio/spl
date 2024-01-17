@@ -1,3 +1,7 @@
+import Examples.ex1
+import Examples.ex2
+import Examples.ex3
+
 
 def bisection(function,
               x_min: float,
@@ -75,3 +79,45 @@ def golden_ratio(function,
 
 
 # ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+
+
+def minuit_ls_example():
+    """
+    Example of minimization with the least squares technique in minuit
+
+    Returns:
+        Example exercise
+    """
+
+    Examples.ex1.main()
+    return
+
+
+# ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+
+
+def minuit_binned_example():
+    """
+    Example of minimization with the maximum likelihood technique in minuit (binned case)
+
+    Returns:
+        Example exercise
+    """
+
+    Examples.ex2.main()
+    return
+
+
+# ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+
+
+def minuit_unbinned_example():
+    """
+    Example of minimization with the maximum likelihood technique in minuit (unbinned case)
+
+    Returns:
+        Example exercise
+    """
+
+    Examples.ex3.main()
+    return
