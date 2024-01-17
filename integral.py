@@ -1,4 +1,4 @@
-from generate import uniform_range, list_uniform_range
+from spl.generate import uniform_range, list_uniform_range
 from math import sqrt
 
 
