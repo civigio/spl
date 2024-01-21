@@ -5,6 +5,7 @@ from iminuit import Minuit
 from iminuit.cost import ExtendedBinnedNLL
 from math import floor, ceil
 from IPython.display import display
+from scipy.stats import chi2
 
 
 def cdf(bin_edges, N_signal, mu, sigma, N_background, tau):
@@ -69,4 +70,7 @@ def main():
               str(my_minuit.errors[key]))
 
     display(my_minuit.draw_mnmatrix())
+
+    print ('associated p-value: ', 1. - chi2.cdf (my_minuit.fval, df = my_minuit.ndof))
+    
     return
