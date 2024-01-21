@@ -4,6 +4,7 @@ import random
 from iminuit import Minuit
 from iminuit.cost import LeastSquares
 from IPython.display import display
+from scipy.stats import chi2
 
 
 def func(x, m, q):
@@ -66,5 +67,7 @@ def main():
     print(my_minuit.covariance.correlation())
 
     display(my_minuit)
+
+    print ('associated p-value: ', 1. - chi2.cdf (my_minuit.fval, df = my_minuit.ndof))
 
     return
