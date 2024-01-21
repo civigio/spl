@@ -5,6 +5,7 @@ from iminuit.cost import UnbinnedNLL
 from matplotlib import pyplot as plt
 from scipy.stats import norm
 from IPython.display import display
+from scipy.stats import chi2
 
 
 def pdf(x, mu, sigma):
@@ -36,4 +37,7 @@ def main():
     my_minuit_2.migrad()
     my_minuit_2.minos()
     display(my_minuit_2)
+
+    print ('associated p-value: ', 1. - chi2.cdf (my_minuit_2.fval, df = my_minuit_2.ndof))
+    
     return
