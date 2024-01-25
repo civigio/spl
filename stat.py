@@ -1,4 +1,4 @@
-from math import sqrt, log, ceil
+from math import sqrt, log, ceil, pow
 
 
 def mean(sample: list[float]) -> float:
@@ -82,6 +82,50 @@ def stderr(sample: list[float],
     """
     n = len(sample)
     return sqrt(variance(sample, bessel) / n)
+
+
+# ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+
+
+def skewness(sample: list[float]) -> float:
+    """
+    Calculation of the skewness of the sample passed as argument
+
+    Args:
+        sample: list of floats representing data
+
+    Returns:
+        The skewness of the sample (gamma1)
+    """
+
+    mean_sample = mean(sample)
+    skew = 0.
+    for x in sample:
+        skew = skew + pow(x - mean_sample,  3)
+    skew = skew / (len(sample) * pow(stddev(sample), 3))
+    return skew
+
+
+# ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+
+
+def kurtosis(sample: list[float]) -> float:
+    """
+    Calculation of the kurtosis of the sample passed as argument
+
+    Args:
+        sample: list of floats representing data
+
+    Returns:
+        The kurtosis of the sample (gamma2)
+    """
+
+    mean_sample = mean(sample)
+    kurt = 0.
+    for x in sample:
+        kurt = kurt + pow(x - mean_sample,  4)
+    kurt = kurt / (len(sample) * pow(variance(sample), 2)) - 3
+    return kurt
 
 
 # ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
